@@ -4,7 +4,7 @@ Run this pass on every draft before you deliver it. The checks are ordered from 
 
 ## Mechanical checks (searchable)
 
-Search the draft for each pattern. Every hit outside code blocks and quoted text is a violation.
+Search the draft for each pattern. In strict mode, review hits outside code blocks and quoted text against the standard. In pragmatic mode, a hit is a review prompt, not an automatic error. Preserve the source's meaning before changing wording.
 
 | Search for | Violation | Fix |
 |---|---|---|
@@ -36,6 +36,7 @@ Search the draft for each pattern. Every hit outside code blocks and quoted text
 9. **Warnings.** Command or condition first, risk second (Rules 7.2, 7.3).
 10. **Completeness.** Articles present, "that" present after "make sure", no telegraph style (Rule 4.2).
 11. **Untouchables intact.** Code, identifiers, quoted errors, and proper nouns are unchanged.
+12. **Source fidelity.** Numbers, units, dates, attribution, negation, requirements, recommendations, and uncertainty match the source. No added causes, measurements, or promises.
 
 ## When reporting violations (check mode)
 

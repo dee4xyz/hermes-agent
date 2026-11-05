@@ -16,7 +16,7 @@ metadata:
 
 # Simple English: Write Like an Aerospace Manual
 
-Write technical text with the rules of ASD-STE100 Simplified Technical English. STE is the controlled language that aerospace and defense manufacturers use for maintenance documentation. The rules exist so that a tired reader who is not a native English speaker cannot misread an instruction. They remove the usual signs of AI-generated text as a side effect: long sentences, synonym rotation, hedges, filler, and decorative clauses.
+Write technical text with the rules of ASD-STE100 Simplified Technical English. STE is the controlled language that aerospace and defense manufacturers use for maintenance documentation. The rules help readers follow instructions, including readers who are tired or not native English speakers. They help reduce long sentences, inconsistent terms, filler, and decorative clauses. Keep uncertainty that the evidence supports. These patterns do not establish whether a person or a model wrote the text.
 
 Write for that tired reader. Each sentence must survive one read.
 
@@ -113,8 +113,8 @@ Break long noun chains with prepositions (of, on, in, for):
 | 3.6 | Active voice. In descriptive text, passive is legal only when the agent is unknown. |
 | 3.7 | Describe an action with a verb, not a noun ("compress the file", not "perform compression of the file"). |
 
-**Approved modals: can, will, must. Banned: should, would, may, might, could (Rule 3.2).**
-The standard rejects "could" even for possibility: write "an explosion can occur", never "could occur". For "should": a requirement becomes "must"; a suggestion is stated as fact or deleted. This matters double for agent instructions — models read "should" as optional.
+**Strict-mode modal vocabulary: can, will, must. Review should, would, may, might, and could under Rule 3.2.**
+In strict mode, restructure unsupported modal forms without changing their force. Use "must" only for an actual requirement. State recommendations as recommendations, and keep uncertain or hypothetical outcomes conditional. In pragmatic mode, keep a modal when it expresses the source accurately. If strict vocabulary and source fidelity conflict, preserve the meaning and flag the wording for review.
 
 **Before:** The migration has completed and the table is being rebuilt.
 **After:** The migration is complete. The database rebuilds the table.
@@ -177,7 +177,7 @@ No imperative in descriptive text. Descriptions explain; procedures instruct.
 Never bury the instruction after the explanation. The pattern transfers directly to destructive CLI flags, irreversible migrations, and dangerous API options.
 
 **Before:** Note that data loss may occur in some circumstances if the destructive flag happens to be enabled when running against production.
-**After:** CAUTION: Do not use the `--force` flag against production. The flag deletes rows that do not match the source.
+**After:** CAUTION: If you enable the destructive flag in production, data loss is possible.
 
 ### Section 8 — Punctuation and word count (Rules 8.1-8.7)
 
@@ -226,10 +226,10 @@ Known part-of-speech rulings, useful as patterns:
 | You wrote | STE writes |
 |---|---|
 | should (requirement) | must |
-| should (recommendation) | Delete it, or state it as fact: "X is better because Y." |
+| should (recommendation) | "We recommend X." Keep the reason and optional status. |
 | may / might / could (possibility) | can |
-| may (permission) | can |
-| would (hypothetical) | Restructure: "If X occurs, Y occurs." |
+| may (permission) | State the permission explicitly; do not confuse it with technical ability. |
+| would (hypothetical) | Keep the condition and the source's uncertainty; do not turn a hypothetical outcome into a fact. |
 
 ### Slop-to-simple substitutions
 
@@ -247,7 +247,7 @@ This table is ours, not the ASD dictionary. It maps the words AI-generated docs 
 | robust, powerful, comprehensive, performant | (delete, or give the measurable property) |
 | functionality | function, feature |
 | enables you to, allows you to | you can |
-| is designed to, aims to | (delete — say what it does) |
+| is designed to, aims to | State implemented behavior only when verified; otherwise keep the planned or intended status. |
 | facilitate | help, make possible |
 | dive into, delve into | read, examine |
 | when it comes to | for |
@@ -303,12 +303,14 @@ Same rules, different targets. Full adaptations in `references/use-cases.md`:
 
 - **Error messages**: state what happened (simple past), the cause if known, then the fix as an imperative. No "Oops", no "Please ensure", no apology filler.
 - **Runbooks**: STE's home turf. Imperative steps, conditions first, warnings before the step.
-- **Incident reports**: simple past only. "We have identified an issue that may have impacted" becomes "Between 14:02 and 14:31 UTC, 12% of requests failed."
+- **Incident reports**: state known events plainly. "We have identified an issue that may have impacted users" becomes "We identified an issue. Its effect on users is not confirmed." Add times, impact figures, and causes only from verified evidence.
 - **Release notes**: breaking changes follow the warning pattern — command first, risk second.
 - **Agent instructions (prompts, AGENTS.md)**: a system prompt is a procedure for a reader that cannot ask questions. One instruction per sentence, no "should", condition first.
 - **Translation prep**: STE's original job. One meaning per word plus complete grammar removes most translation ambiguity.
 
 ## Self-Check Before You Deliver
+
+First compare the revision with its source. Preserve numbers, units, dates, scope, negation, attribution, permission, obligation, and uncertainty. Do not add an error cause, metric, or completion claim to make an example more concrete. The examples below illustrate language, not evidence for another system.
 
 This step is not optional. Run these four checks on your draft:
 
@@ -329,7 +331,7 @@ Fix what you find, then deliver. For a full audit, run `references/checklist.md`
 
 > **Connection timeouts.** sqlpipe stops with `dial tcp: i/o timeout` when it cannot reach the Postgres port (5432 by default).
 >
-> 1. Make sure that the host that runs sqlpipe can reach the Postgres port. A firewall or security group usually blocks it.
+> 1. Make sure that the host that runs sqlpipe can reach the Postgres port. A firewall or security group can block the connection.
 > 2. If the database is managed (RDS, Cloud SQL), make sure that the instance accepts connections from the IP of sqlpipe.
 > 3. If the network is slow, increase `source.connect_timeout_seconds` in the configuration.
 
