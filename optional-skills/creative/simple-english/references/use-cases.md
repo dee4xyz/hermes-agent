@@ -28,7 +28,7 @@ Mode: strict-leaning procedural. This is STE's home turf — an on-call runbook 
 Mode: descriptive. Simple past only — a timeline in present perfect ("we have identified...") hides when things happened.
 
 > **Before:** We have identified an issue that may have impacted some users' ability to access the service.
-> **After:** We identified an issue. Its effect on access to the service is not confirmed.
+> **After:** We identified an issue. It is possible that the issue affected access for some users.
 
 State known events and retain uncertainty about the rest. Add time ranges, percentages, or causes only when source evidence supports them.
 

@@ -303,7 +303,7 @@ Same rules, different targets. Full adaptations in `references/use-cases.md`:
 
 - **Error messages**: state what happened (simple past), the cause if known, then the fix as an imperative. No "Oops", no "Please ensure", no apology filler.
 - **Runbooks**: STE's home turf. Imperative steps, conditions first, warnings before the step.
-- **Incident reports**: state known events plainly. "We have identified an issue that may have impacted users" becomes "We identified an issue. Its effect on users is not confirmed." Add times, impact figures, and causes only from verified evidence.
+- **Incident reports**: state known events plainly. "We have identified an issue that may have impacted users" becomes "We identified an issue. It is possible that the issue affected users." Add times, impact figures, and causes only from verified evidence.
 - **Release notes**: breaking changes follow the warning pattern — command first, risk second.
 - **Agent instructions (prompts, AGENTS.md)**: a system prompt is a procedure for a reader that cannot ask questions. One instruction per sentence, no "should", condition first.
 - **Translation prep**: STE's original job. One meaning per word plus complete grammar removes most translation ambiguity.
